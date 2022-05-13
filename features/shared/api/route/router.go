@@ -1,6 +1,10 @@
 package route
 
-import "github.com/gorilla/mux"
+import (
+	_ "github.com/api-template-go/docs"
+	"github.com/gorilla/mux"
+	httpSwagger "github.com/swaggo/http-swagger"
+)
 
 type router struct {
 	muxRouter *mux.Router
@@ -11,6 +15,13 @@ func NewRouter() IRouter {
 	return router{
 		muxRouter: muxRouter,
 	}
+}
+
+// @title           API Swagger
+// @version         1.0
+func (r router) WithAPIDocumentation() IRouter {
+	r.muxRouter.PathPrefix("/swagger").Handler(httpSwagger.WrapHandler)
+	return r
 }
 
 func (r router) WithRoute(route route) IRouter {
