@@ -12,23 +12,23 @@ type router struct {
 
 func NewRouter() IRouter {
 	muxRouter := mux.NewRouter().StrictSlash(true)
-	return router{
+	return &router{
 		muxRouter: muxRouter,
 	}
 }
 
 // @title           API Swagger
 // @version         1.0
-func (r router) WithAPIDocumentation() IRouter {
+func (r *router) WithAPIDocumentation() IRouter {
 	r.muxRouter.PathPrefix("/swagger").Handler(httpSwagger.WrapHandler)
 	return r
 }
 
-func (r router) WithRoute(route route) IRouter {
+func (r *router) WithRoute(route route) IRouter {
 	r.muxRouter.HandleFunc(route.name, route.handler)
 	return r
 }
 
-func (r router) GetRouter() *mux.Router {
+func (r *router) GetRouter() *mux.Router {
 	return r.muxRouter
 }

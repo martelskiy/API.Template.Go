@@ -18,7 +18,7 @@ type host struct {
 }
 
 func NewHost(port string, router route.IRouter) IHost {
-	return host{
+	return &host{
 		router: router,
 		logger: logger.Get(),
 		server: http.Server{
@@ -28,15 +28,15 @@ func NewHost(port string, router route.IRouter) IHost {
 	}
 }
 
-func (h host) RunAsync() error {
+func (h *host) RunAsync() error {
 	go func() {
-		if err := h.server.ListenAndServe(); err != nil {
-			h.logger.With("error", err).Panic("error running web host")
-		}
+		if err := h.server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
+			h.logger.With("error", err.Error()).Panic("error running web host")
+		}	
 	}()
 	return nil
 }
 
-func (h host) Terminate(ctx context.Context) error {
+func (h *host) Terminate(ctx context.Context) error {
 	return h.server.Shutdown(ctx)
 }

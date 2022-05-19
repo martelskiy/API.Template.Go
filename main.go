@@ -15,7 +15,6 @@ func main() {
 
 	log := logger.Initialize()
 	log.Info("logger initialized")
-
 	router := route.NewRouter()
 	router.
 		WithAPIDocumentation().
@@ -32,5 +31,7 @@ func main() {
 	lifecycle.ListenForApplicationShutDown(func() {
 		log.Info("terminating the web host")
 		host.Terminate(context)
+		log.Info("disposing logger")
+		logger.Dispose()
 	})
 }
