@@ -2,7 +2,7 @@ API template project suppose to be used as a starter for a new service developme
 Current template includes:
 
 ## Logger
-[This](https://github.com/uber-go/zap) package is used for logger implementation
+[Zap](https://github.com/uber-go/zap) package is used for logger implementation
 
 ## Open API
 
@@ -24,4 +24,3 @@ http://localhost:8080/swagger/index.html
 ## Web API Router
 
 [Mux](github.com/gorilla/mux) is used as a router for a web API
-```
