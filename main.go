@@ -12,18 +12,22 @@ import (
 
 func main() {
 	context := context.Background()
+
 	log := logger.Initialize()
+	log.Info("logger initialized")
 
 	router := route.NewRouter()
 	router.
 		WithAPIDocumentation().
 		WithRoute(route.NewRoute("/status", healthcheck.GetStatus))
 
-	host := host.NewHost("8080", router)
+	port := "8080"
+	host := host.NewHost(port, router)
 	err := host.RunAsync()
 	if err != nil {
 		lifecycle.StopApplication("error running web host")
 	}
+	log.Infof("web host is running at port: '%s'", port)
 
 	lifecycle.ListenForApplicationShutDown(func() {
 		log.Info("terminating the web host")
