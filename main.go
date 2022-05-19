@@ -26,7 +26,7 @@ func main() {
 	}
 
 	lifecycle.ListenForApplicationShutDown(func() {
-		log.Info("shutdown signal received. Terminating the web host")
+		log.Info("terminating the web host")
 		host.Terminate(context)
 	})
 }

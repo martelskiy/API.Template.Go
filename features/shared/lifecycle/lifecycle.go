@@ -17,8 +17,9 @@ func ListenForApplicationShutDown(shutdownFunc func()) {
 	sig := <-signalChannel
 	switch sig {
 	case os.Interrupt, syscall.SIGTERM:
+		log.Info("shutdown signal received")
 		shutdownFunc()
-	}
+	}		
 }
 
 func StopApplication(message string) {
