@@ -5,7 +5,7 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/api-template-go/features/shared/logger"
+	"github.com/api-template-go/internal/shared/logger"
 )
 
 var log = logger.Get()
@@ -19,7 +19,7 @@ func ListenForApplicationShutDown(shutdownFunc func()) {
 	case os.Interrupt, syscall.SIGTERM:
 		log.Info("shutdown signal received")
 		shutdownFunc()
-	}		
+	}
 }
 
 func StopApplication(message string) {

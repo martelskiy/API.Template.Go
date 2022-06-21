@@ -4,8 +4,8 @@ import (
 	"context"
 	"net/http"
 
-	"github.com/api-template-go/features/shared/api/route"
-	"github.com/api-template-go/features/shared/logger"
+	"github.com/api-template-go/internal/shared/api/route"
+	"github.com/api-template-go/internal/shared/logger"
 	"go.uber.org/zap"
 )
 
@@ -32,7 +32,7 @@ func (h *host) RunAsync() error {
 	go func() {
 		if err := h.server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
 			h.logger.With("error", err.Error()).Panic("error running web host")
-		}	
+		}
 	}()
 	return nil
 }

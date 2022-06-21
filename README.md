@@ -6,7 +6,7 @@ Current template includes:
 
 ## Open API
 
-[Swag](github.com/swaggo/swag) is used for an Open API in composition with [HTTP Swagger](github.com/swaggo/http-swagger) which helps to integrate with native `net/http` GO package.
+[Swag](https://github.com/swaggo/swag) is used for an Open API in composition with [HTTP Swagger](https://github.com/swaggo/http-swagger) which helps to integrate with native `net/http` GO package.
 
 In order to generate or update docs for Open API documentation it needs to run command (from the root):
 
@@ -23,4 +23,4 @@ http://localhost:8080/swagger/index.html
 ```
 ## Web API Router
 
-[Mux](github.com/gorilla/mux) is used as a router for a web API
+[Mux](https://github.com/gorilla/mux) is used as a router for a web API

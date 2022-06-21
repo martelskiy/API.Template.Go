@@ -3,11 +3,11 @@ package main
 import (
 	"context"
 
-	"github.com/api-template-go/features/healthcheck"
-	"github.com/api-template-go/features/shared/api/host"
-	"github.com/api-template-go/features/shared/api/route"
-	"github.com/api-template-go/features/shared/lifecycle"
-	"github.com/api-template-go/features/shared/logger"
+	"github.com/api-template-go/internal/healthcheck"
+	"github.com/api-template-go/internal/shared/api/host"
+	"github.com/api-template-go/internal/shared/api/route"
+	"github.com/api-template-go/internal/shared/lifecycle"
+	"github.com/api-template-go/internal/shared/logger"
 )
 
 func main() {

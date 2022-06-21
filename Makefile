@@ -1,10 +1,11 @@
 BINARY_NAME=api-template-go
+EXEC_DIRECTORY=cmd/api-template-go
 
 build:
-	go build -o ${BINARY_NAME}.exe main.go
+	go build -o ${EXEC_DIRECTORY}/${BINARY_NAME}.exe ${EXEC_DIRECTORY}/main.go
 
 run:
-	./${BINARY_NAME}.exe
+	./${EXEC_DIRECTORY}/${BINARY_NAME}.exe
 
 build_and_run: build run
 
@@ -21,4 +22,4 @@ dep:
 	go mod download
 
 vet:
-	go vet
+	go vet ./...
